@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./ 
+    command: npm run dev
+    environment:
+      - VITE_API_BASE_URL=http://api:3000
+    ports:
+      - '3030:3030'
+    networks:
+      - default
+    volumes:
+      - .:/app
+
+networks:
+  default:
+    external: true
+    name: shared-network
